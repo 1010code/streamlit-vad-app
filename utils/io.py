@@ -34,7 +34,8 @@ from typing import Mapping, Optional, Text, Tuple, Union
 import numpy as np
 import torch.nn.functional as F
 import torchaudio
-from pyannote.core import Segment
+# from pyannote.core import Segment
+from .segment import Segment
 from torch import Tensor
 
 torchaudio.set_audio_backend("soundfile")

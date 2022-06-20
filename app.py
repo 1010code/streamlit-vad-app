@@ -4,7 +4,7 @@ import numpy as np
 import scipy.io.wavfile
 from typing import Text
 import streamlit as st
-from uitls import Audio
+from utils.io import Audio
 
 import streamlit.components.v1 as components
 
