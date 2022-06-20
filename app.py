@@ -9,8 +9,6 @@ from utils.io import Audio
 import streamlit.components.v1 as components
 
 import torch
-
-
 def to_base64(waveform: np.ndarray, sample_rate: int = 16000) -> Text:
     """Convert waveform to base64 data"""
     waveform /= np.max(np.abs(waveform)) + 1e-8
@@ -25,7 +23,6 @@ st.markdown("""### 🎹 語音活性檢測 (Voice activity detection) """)
 
 # 初始化聲音資訊
 audio = Audio(sample_rate=16000, mono=True)
-
 
 @st.cache(allow_output_mutation=True)
 def load_model():
@@ -51,7 +48,7 @@ if uploaded_file is not None:
     except RuntimeError as e:
         st.error(e)
         st.stop()
-        
+
 #     waveform, sample_rate = torchaudio.load(uploaded_file)
     waveform, sample_rate = audio(uploaded_file)
     uri = "".join(uploaded_file.name.split())
@@ -94,5 +91,4 @@ if uploaded_file is not None:
     html = html_template.replace("BASE64", BASE64).replace("REGIONS", REGIONS)
     components.html(html, height=250, scrolling=True)
     st.markdown("<div style='overflow : auto'><ul class='legend'>"+LEGENDS+"</ul></div>", unsafe_allow_html=True)
-
     st.markdown("---")
