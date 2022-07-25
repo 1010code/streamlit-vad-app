@@ -87,7 +87,7 @@ if uploaded_file is not None:
         if not label in labels:
             LEGENDS += f"<li><span style='background-color:{label2color[label]}'></span>{label}</li>"
             labels.append(label)
-
+    print(BASE64)
     html = html_template.replace("BASE64", BASE64).replace("REGIONS", REGIONS)
     components.html(html, height=250, scrolling=True)
     st.markdown("<div style='overflow : auto'><ul class='legend'>"+LEGENDS+"</ul></div>", unsafe_allow_html=True)
